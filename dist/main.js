@@ -1561,6 +1561,57 @@ if (false) {} else {
   module.exports = __webpack_require__(/*! ./cjs/scheduler.development.js */ "./node_modules/scheduler/cjs/scheduler.development.js");
 }
 
+/***/ }),
+
+/***/ "./src/controllers/handleClick.js":
+/*!****************************************!*\
+  !*** ./src/controllers/handleClick.js ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   handleClick: () => (/* binding */ handleClick)
+/* harmony export */ });
+/* harmony import */ var _utils_output__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/output */ "./src/utils/output.js");
+
+function handleClick() {
+  (0,_utils_output__WEBPACK_IMPORTED_MODULE_0__.output)("discount code 2025");
+}
+
+/***/ }),
+
+/***/ "./src/controllers/handleSubmit.js":
+/*!*****************************************!*\
+  !*** ./src/controllers/handleSubmit.js ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   handleSubmit: () => (/* binding */ handleSubmit)
+/* harmony export */ });
+function handleSubmit(event = new Event()) {
+  event.preventDefault();
+  console.log("Thank you for your information.");
+}
+
+/***/ }),
+
+/***/ "./src/utils/output.js":
+/*!*****************************!*\
+  !*** ./src/utils/output.js ***!
+  \*****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   output: () => (/* binding */ output)
+/* harmony export */ });
+function output(message = "", outputTag = "outputTag", shouldAppend = true) {
+  if (shouldAppend) window[outputTag].innerHTML += message;else window[outputTag].innerHTML = message;
+}
+
 /***/ })
 
 /******/ 	});
@@ -1653,14 +1704,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom/client */ "./node_modules/react-dom/client.js");
+/* harmony import */ var _controllers_handleSubmit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./controllers/handleSubmit */ "./src/controllers/handleSubmit.js");
+/* harmony import */ var _controllers_handleClick__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./controllers/handleClick */ "./src/controllers/handleClick.js");
+
+
 
 
 const root = (0,react_dom_client__WEBPACK_IMPORTED_MODULE_1__.createRoot)(window.bodyTag);
 root.render(/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("main", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", {
-  class: "m-1 text-center"
-}, "Rods and reels!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", {
-  class: "p-2"
-}, "Hello outdoors friends!!!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("iframe", {
+  class: "m-1 text-center "
+}, "Rods and reels!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("iframe", {
+  class: "m-5",
   width: "560",
   height: "315",
   src: "https://www.youtube.com/embed/rhhBPNUXYis?si=q0SyOcgPYlbUj4NE",
@@ -1670,19 +1724,29 @@ root.render(/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElem
   referrerPolicy: "strict-origin-when-cross-origin",
   allowFullScreen: true
 }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
-  class: "san-serif"
-}, "Hello my fellow fishing enthusiasts! We have 100's of rods and reels on sale right now. Every brand you can think of from abu garcias to zebcos in many different colors to fit every age. We even have ocean poles for you deep sea fishermen who love to go all out. Come check us out and leave your information to recieve an extra discount on our already low prices."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
-  onClick: () => console.log("click"),
-  class: "btn btn-primary"
+  class: "fw-bold fst-italic p-2"
+}, "Hello my fellow fishing enthusiasts! We have 100's of rods and reels on sale right now. Every brand you can think of from abu garcias to zebcos in many different colors to fit every age. We even have ocean poles for you deep sea fishermen who love to go all out. Come check us out and leave your information to recieve an extra discount on our already low prices."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+  class: "p-2"
+}, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, "Abu Garcia Max X baitcast"), "Abu Garcia Max X baitcast Experience better-than-ever Abu Garcia engineering for MAXimum performance with the Abu Garcia Max X baitcast combo. This combo features a custom designed reel seat with integrated polymer comfort grip, for ultimate comfort, 4+1 bearing system for ultimate smoothness, and 24-ton graphite construction for ultimate sensitivity."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+  class: "p-2"
+}, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, "Zebco Bullet MG Spincast Reel"), "100% performance-driven, the Zebco\xAE Bullet MG Spincast Reel features a super-lightweight magnesium body that pairs perfectly with your finest rods, for a precision feel and balance that you'll appreciate all day long. It's Zebco's fastest spincaster ever, with a 5.1:1 retrieve ratio that brings in an impressive 29.6\" of line per handle turn, and it has all the speed and power needed to handle big game fish in freshwater. Now you can turn to spincast gear for performance fishing using your favorite techniques, without worrying about line tangles and other issues. The Zebco Bullet MG's unprecedented feature list includes strong all-metal construction; precision-machined aluminum and brass gears; a GlideLine ball bearing: a smooth 9-bearing (8+1) system with anti-reverse clutch; oscillating quick-change spool; ZeroFriction\u2122 pick-up pins; dial-adjustable disk drag with up to 12 lbs. of run-stopping power; and special GripEm\u2122 handle knobs for solid retrieves in any weather. Convertible left/right retrieve; pre-spooled with premium 10-lb. mono. Manufacturer's 1-year warranty."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+  class: "p-2"
+}, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, "Offshore Angler SeaFire Conventional Rod and Reel Combo"), "Set the water on fire with the Offshore Angler\u2122 SeaFire Conventional Rod and Reel Combo. Our SeaFire Conventional Reel is ideal for bottom fishing for snapper or grouper. It's also a great trolling reel for tuna, dolphin, and kingfish. A 1-piece CNC-machined aluminum frame provides the strength needed to hold up to hard-charging trophies. Smooth and precise, the SeaFire features 4 sealed stainless steel ball bearings engineered to perform in a harsh saltwater environment. Additional features include a powerful star drag system to help slow the run, a double-anodized machined-aluminum spool with line capacity rings, and an audible bait clicker. Offshore Angler's tenacious SeaFire Conventional Rod boasts a rugged, 1-piece tubular composite blank with corrosion-resistant, double-footed stainless steel guides and a graphite reel seat. A comfortable EVA handle and graphite gimbal with cover work well with rod holders and fighting belts."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+  class: "p-2"
+}, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, "2-Piece Saltwater Spinning Fishing Rod Offshore Heavy Graphite"), "2-Piece Saltwater Spinning Fishing Rod Offshore Heavy Graphite Portable Travel Description: Fiblink 2-Piece Saltwater Spinning fishing Rod offshore Carbon Portable Fishing Rod At Fiblink Fishing Tackle we deliver more than just fishing gears. We deliver the motivation to hit the water, the energy to keep focus and the excitement that immits every cast with high expectations. Each of our products is designed and continuously improved through the customer's needs and market trends. We do our best to continually improve our products to meet your individual fishing equipment needs. We are proud to provide the 1 year Service! Powerful, versatile, and flexible. Light weight with tremendous overall strength. 2-Piece portable carbon saltwater spinning fishing rod. Specifications 6' Heavy Length: 6' | Pieces: 2 | Power: Heavy | Guides: 6+1 | Line Weight: 30-50Lb | Lure Weight: 4-7oz | Rod Weight: 11.7oz 7' Medium Heavy Length: 7' | Pieces: 2 | Power: Medium Heavy | Guides: 7+1 | Line Weight: 15-30Lb | Lure Wei"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+  onClick: _controllers_handleClick__WEBPACK_IMPORTED_MODULE_3__.handleClick,
+  class: "btn btn-primary p-2"
 }, "Best price guaranteed!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
-  onSubmit: () => console.log("discount code 2025")
-}, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+  onSubmit: _controllers_handleSubmit__WEBPACK_IMPORTED_MODULE_2__.handleSubmit
+}, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), "Name: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
   type: "name"
-}), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+}), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), "Email: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
   type: "email"
-}), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
-  type: "number",
-  value: [1, 2, 3] - [4, 5, 6] - [7, 8, 9]
+}), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), "Number:", " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+  type: "tel",
+  id: "phone",
+  placeholder: "(123) 456 - 7890 ",
+  maxLength: "12"
 }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
   type: "submit",
   class: "btn btn-warning"
