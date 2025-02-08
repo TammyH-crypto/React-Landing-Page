@@ -1,7 +1,6 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 import { handleSubmit } from "./controllers/handleSubmit";
-import { handleClick } from "./controllers/handleClick";
 import "../index.scss";
 import Product from "./Views/Product";
 import { products } from "./utils/products";
@@ -10,9 +9,10 @@ const productsList = products();
 const root = createRoot(window.bodyTag);
 root.render(
   <main>
-    <h1 className="m-1 text-center ">Rods and reels!</h1>
+    <h1 className="text-center ">Rods and reels!</h1>
     <br />
-    <iframe
+    <div className="d-flex justify-content-center">
+      <iframe
       className="m-5"
       width="560"
       height="315"
@@ -23,6 +23,8 @@ root.render(
       referrerPolicy="strict-origin-when-cross-origin"
       allowFullScreen
     ></iframe>
+    </div>
+    
     <br />
     <p className="fw-bold fst-italic p-2">
       Hello my fellow fishing enthusiasts! We have 100's of rods and reels on
@@ -36,28 +38,29 @@ root.render(
       <div className="container text-center">
         <div className="row">
           {productsList.map((product, index) => (
-            <div key={index} className="col mt-5">
+            <div
+              key={index}
+              className="col-12 col-md-6 col-xxl-3 mt-5 align-items-center d-flex flex-column"
+            >
               <Product product={product} />
             </div>
           ))}
         </div>
       </div>
     </section>
-    <button onClick={handleClick} className="btn btn-primary p-2">
-      Best price guaranteed!
-    </button>
     <br />
     <div className="d-flex justify-content-center w-100">
       <form className="w-50" onSubmit={handleSubmit}>
         <label className="d-flex flex-column">
-          Name: <input required type="text" />
+          Name: <input required name="name" type="text" />
         </label>
         <label className="d-flex flex-column">
-          Email: <input required type="email" />
+          Email: <input name="email" type="email" />
         </label>
         <label className="d-flex flex-column">
           Number:
           <input
+            name="phone"
             type="tel"
             id="phone"
             placeholder="(123) 456 - 7890 "
