@@ -1,6 +1,813 @@
 /******/ (() => { // webpackBootstrap
-/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
+
+/***/ "./index.scss":
+/*!********************!*\
+  !*** ./index.scss ***!
+  \********************/
+/***/ (() => {
+
+
+
+/***/ }),
+
+/***/ "./node_modules/@restart/ui/esm/Button.js":
+/*!************************************************!*\
+  !*** ./node_modules/@restart/ui/esm/Button.js ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
+/* harmony export */   isTrivialHref: () => (/* binding */ isTrivialHref),
+/* harmony export */   useButtonProps: () => (/* binding */ useButtonProps)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+const _excluded = ["as", "disabled"];
+function _objectWithoutPropertiesLoose(r, e) {
+  if (null == r) return {};
+  var t = {};
+  for (var n in r) if ({}.hasOwnProperty.call(r, n)) {
+    if (e.indexOf(n) >= 0) continue;
+    t[n] = r[n];
+  }
+  return t;
+}
+
+
+function isTrivialHref(href) {
+  return !href || href.trim() === '#';
+}
+function useButtonProps({
+  tagName,
+  disabled,
+  href,
+  target,
+  rel,
+  role,
+  onClick,
+  tabIndex = 0,
+  type
+}) {
+  if (!tagName) {
+    if (href != null || target != null || rel != null) {
+      tagName = 'a';
+    } else {
+      tagName = 'button';
+    }
+  }
+  const meta = {
+    tagName
+  };
+  if (tagName === 'button') {
+    return [{
+      type: type || 'button',
+      disabled
+    }, meta];
+  }
+  const handleClick = event => {
+    if (disabled || tagName === 'a' && isTrivialHref(href)) {
+      event.preventDefault();
+    }
+    if (disabled) {
+      event.stopPropagation();
+      return;
+    }
+    onClick == null ? void 0 : onClick(event);
+  };
+  const handleKeyDown = event => {
+    if (event.key === ' ') {
+      event.preventDefault();
+      handleClick(event);
+    }
+  };
+  if (tagName === 'a') {
+    // Ensure there's a href so Enter can trigger anchor button.
+    href || (href = '#');
+    if (disabled) {
+      href = undefined;
+    }
+  }
+  return [{
+    role: role != null ? role : 'button',
+    // explicitly undefined so that it overrides the props disabled in a spread
+    // e.g. <Tag {...props} {...hookProps} />
+    disabled: undefined,
+    tabIndex: disabled ? undefined : tabIndex,
+    href,
+    target: tagName === 'a' ? target : undefined,
+    'aria-disabled': !disabled ? undefined : disabled,
+    rel: tagName === 'a' ? rel : undefined,
+    onClick: handleClick,
+    onKeyDown: handleKeyDown
+  }, meta];
+}
+const Button = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.forwardRef((_ref, ref) => {
+  let {
+      as: asProp,
+      disabled
+    } = _ref,
+    props = _objectWithoutPropertiesLoose(_ref, _excluded);
+  const [buttonProps, {
+    tagName: Component
+  }] = useButtonProps(Object.assign({
+    tagName: asProp,
+    disabled
+  }, props));
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(Component, Object.assign({}, props, buttonProps, {
+    ref: ref
+  }));
+});
+Button.displayName = 'Button';
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Button);
+
+/***/ }),
+
+/***/ "./node_modules/react-bootstrap/esm/Button.js":
+/*!****************************************************!*\
+  !*** ./node_modules/react-bootstrap/esm/Button.js ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _restart_ui_Button__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @restart/ui/Button */ "./node_modules/@restart/ui/esm/Button.js");
+/* harmony import */ var _ThemeProvider__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ThemeProvider */ "./node_modules/react-bootstrap/esm/ThemeProvider.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+"use client";
+
+
+
+
+
+
+const Button = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.forwardRef(({
+  as,
+  bsPrefix,
+  variant = 'primary',
+  size,
+  active = false,
+  disabled = false,
+  className,
+  ...props
+}, ref) => {
+  const prefix = (0,_ThemeProvider__WEBPACK_IMPORTED_MODULE_3__.useBootstrapPrefix)(bsPrefix, 'btn');
+  const [buttonProps, {
+    tagName
+  }] = (0,_restart_ui_Button__WEBPACK_IMPORTED_MODULE_4__.useButtonProps)({
+    tagName: as,
+    disabled,
+    ...props
+  });
+  const Component = tagName;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Component, {
+    ...buttonProps,
+    ...props,
+    ref: ref,
+    disabled: disabled,
+    className: classnames__WEBPACK_IMPORTED_MODULE_0___default()(className, prefix, active && 'active', variant && `${prefix}-${variant}`, size && `${prefix}-${size}`, props.href && disabled && 'disabled')
+  });
+});
+Button.displayName = 'Button';
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Button);
+
+/***/ }),
+
+/***/ "./node_modules/react-bootstrap/esm/Card.js":
+/*!**************************************************!*\
+  !*** ./node_modules/react-bootstrap/esm/Card.js ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _ThemeProvider__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ThemeProvider */ "./node_modules/react-bootstrap/esm/ThemeProvider.js");
+/* harmony import */ var _CardBody__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./CardBody */ "./node_modules/react-bootstrap/esm/CardBody.js");
+/* harmony import */ var _CardFooter__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./CardFooter */ "./node_modules/react-bootstrap/esm/CardFooter.js");
+/* harmony import */ var _CardHeader__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./CardHeader */ "./node_modules/react-bootstrap/esm/CardHeader.js");
+/* harmony import */ var _CardImg__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./CardImg */ "./node_modules/react-bootstrap/esm/CardImg.js");
+/* harmony import */ var _CardImgOverlay__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./CardImgOverlay */ "./node_modules/react-bootstrap/esm/CardImgOverlay.js");
+/* harmony import */ var _CardLink__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./CardLink */ "./node_modules/react-bootstrap/esm/CardLink.js");
+/* harmony import */ var _CardSubtitle__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./CardSubtitle */ "./node_modules/react-bootstrap/esm/CardSubtitle.js");
+/* harmony import */ var _CardText__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./CardText */ "./node_modules/react-bootstrap/esm/CardText.js");
+/* harmony import */ var _CardTitle__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./CardTitle */ "./node_modules/react-bootstrap/esm/CardTitle.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+"use client";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const Card = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.forwardRef(({
+  bsPrefix,
+  className,
+  bg,
+  text,
+  border,
+  body = false,
+  children,
+  // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
+  as: Component = 'div',
+  ...props
+}, ref) => {
+  const prefix = (0,_ThemeProvider__WEBPACK_IMPORTED_MODULE_3__.useBootstrapPrefix)(bsPrefix, 'card');
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Component, {
+    ref: ref,
+    ...props,
+    className: classnames__WEBPACK_IMPORTED_MODULE_0___default()(className, prefix, bg && `bg-${bg}`, text && `text-${text}`, border && `border-${border}`),
+    children: body ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_CardBody__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      children: children
+    }) : children
+  });
+});
+Card.displayName = 'Card';
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Object.assign(Card, {
+  Img: _CardImg__WEBPACK_IMPORTED_MODULE_5__["default"],
+  Title: _CardTitle__WEBPACK_IMPORTED_MODULE_6__["default"],
+  Subtitle: _CardSubtitle__WEBPACK_IMPORTED_MODULE_7__["default"],
+  Body: _CardBody__WEBPACK_IMPORTED_MODULE_4__["default"],
+  Link: _CardLink__WEBPACK_IMPORTED_MODULE_8__["default"],
+  Text: _CardText__WEBPACK_IMPORTED_MODULE_9__["default"],
+  Header: _CardHeader__WEBPACK_IMPORTED_MODULE_10__["default"],
+  Footer: _CardFooter__WEBPACK_IMPORTED_MODULE_11__["default"],
+  ImgOverlay: _CardImgOverlay__WEBPACK_IMPORTED_MODULE_12__["default"]
+}));
+
+/***/ }),
+
+/***/ "./node_modules/react-bootstrap/esm/CardBody.js":
+/*!******************************************************!*\
+  !*** ./node_modules/react-bootstrap/esm/CardBody.js ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _ThemeProvider__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ThemeProvider */ "./node_modules/react-bootstrap/esm/ThemeProvider.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+"use client";
+
+
+
+
+
+const CardBody = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.forwardRef(({
+  className,
+  bsPrefix,
+  as: Component = 'div',
+  ...props
+}, ref) => {
+  bsPrefix = (0,_ThemeProvider__WEBPACK_IMPORTED_MODULE_3__.useBootstrapPrefix)(bsPrefix, 'card-body');
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Component, {
+    ref: ref,
+    className: classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, bsPrefix),
+    ...props
+  });
+});
+CardBody.displayName = 'CardBody';
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CardBody);
+
+/***/ }),
+
+/***/ "./node_modules/react-bootstrap/esm/CardFooter.js":
+/*!********************************************************!*\
+  !*** ./node_modules/react-bootstrap/esm/CardFooter.js ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _ThemeProvider__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ThemeProvider */ "./node_modules/react-bootstrap/esm/ThemeProvider.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+"use client";
+
+
+
+
+
+const CardFooter = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.forwardRef(({
+  className,
+  bsPrefix,
+  as: Component = 'div',
+  ...props
+}, ref) => {
+  bsPrefix = (0,_ThemeProvider__WEBPACK_IMPORTED_MODULE_3__.useBootstrapPrefix)(bsPrefix, 'card-footer');
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Component, {
+    ref: ref,
+    className: classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, bsPrefix),
+    ...props
+  });
+});
+CardFooter.displayName = 'CardFooter';
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CardFooter);
+
+/***/ }),
+
+/***/ "./node_modules/react-bootstrap/esm/CardHeader.js":
+/*!********************************************************!*\
+  !*** ./node_modules/react-bootstrap/esm/CardHeader.js ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _ThemeProvider__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ThemeProvider */ "./node_modules/react-bootstrap/esm/ThemeProvider.js");
+/* harmony import */ var _CardHeaderContext__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./CardHeaderContext */ "./node_modules/react-bootstrap/esm/CardHeaderContext.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+"use client";
+
+
+
+
+
+
+
+const CardHeader = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.forwardRef(({
+  bsPrefix,
+  className,
+  // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
+  as: Component = 'div',
+  ...props
+}, ref) => {
+  const prefix = (0,_ThemeProvider__WEBPACK_IMPORTED_MODULE_3__.useBootstrapPrefix)(bsPrefix, 'card-header');
+  const contextValue = (0,react__WEBPACK_IMPORTED_MODULE_1__.useMemo)(() => ({
+    cardHeaderBsPrefix: prefix
+  }), [prefix]);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_CardHeaderContext__WEBPACK_IMPORTED_MODULE_4__["default"].Provider, {
+    value: contextValue,
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Component, {
+      ref: ref,
+      ...props,
+      className: classnames__WEBPACK_IMPORTED_MODULE_0___default()(className, prefix)
+    })
+  });
+});
+CardHeader.displayName = 'CardHeader';
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CardHeader);
+
+/***/ }),
+
+/***/ "./node_modules/react-bootstrap/esm/CardHeaderContext.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/react-bootstrap/esm/CardHeaderContext.js ***!
+  \***************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+"use client";
+
+
+const context = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createContext(null);
+context.displayName = 'CardHeaderContext';
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (context);
+
+/***/ }),
+
+/***/ "./node_modules/react-bootstrap/esm/CardImg.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/react-bootstrap/esm/CardImg.js ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _ThemeProvider__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ThemeProvider */ "./node_modules/react-bootstrap/esm/ThemeProvider.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+"use client";
+
+
+
+
+
+const CardImg = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.forwardRef(
+// Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
+({
+  bsPrefix,
+  className,
+  variant,
+  as: Component = 'img',
+  ...props
+}, ref) => {
+  const prefix = (0,_ThemeProvider__WEBPACK_IMPORTED_MODULE_3__.useBootstrapPrefix)(bsPrefix, 'card-img');
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Component, {
+    ref: ref,
+    className: classnames__WEBPACK_IMPORTED_MODULE_0___default()(variant ? `${prefix}-${variant}` : prefix, className),
+    ...props
+  });
+});
+CardImg.displayName = 'CardImg';
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CardImg);
+
+/***/ }),
+
+/***/ "./node_modules/react-bootstrap/esm/CardImgOverlay.js":
+/*!************************************************************!*\
+  !*** ./node_modules/react-bootstrap/esm/CardImgOverlay.js ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _ThemeProvider__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ThemeProvider */ "./node_modules/react-bootstrap/esm/ThemeProvider.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+"use client";
+
+
+
+
+
+const CardImgOverlay = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.forwardRef(({
+  className,
+  bsPrefix,
+  as: Component = 'div',
+  ...props
+}, ref) => {
+  bsPrefix = (0,_ThemeProvider__WEBPACK_IMPORTED_MODULE_3__.useBootstrapPrefix)(bsPrefix, 'card-img-overlay');
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Component, {
+    ref: ref,
+    className: classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, bsPrefix),
+    ...props
+  });
+});
+CardImgOverlay.displayName = 'CardImgOverlay';
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CardImgOverlay);
+
+/***/ }),
+
+/***/ "./node_modules/react-bootstrap/esm/CardLink.js":
+/*!******************************************************!*\
+  !*** ./node_modules/react-bootstrap/esm/CardLink.js ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _ThemeProvider__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ThemeProvider */ "./node_modules/react-bootstrap/esm/ThemeProvider.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+"use client";
+
+
+
+
+
+const CardLink = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.forwardRef(({
+  className,
+  bsPrefix,
+  as: Component = 'a',
+  ...props
+}, ref) => {
+  bsPrefix = (0,_ThemeProvider__WEBPACK_IMPORTED_MODULE_3__.useBootstrapPrefix)(bsPrefix, 'card-link');
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Component, {
+    ref: ref,
+    className: classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, bsPrefix),
+    ...props
+  });
+});
+CardLink.displayName = 'CardLink';
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CardLink);
+
+/***/ }),
+
+/***/ "./node_modules/react-bootstrap/esm/CardSubtitle.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/react-bootstrap/esm/CardSubtitle.js ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _ThemeProvider__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./ThemeProvider */ "./node_modules/react-bootstrap/esm/ThemeProvider.js");
+/* harmony import */ var _divWithClassName__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./divWithClassName */ "./node_modules/react-bootstrap/esm/divWithClassName.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+"use client";
+
+
+
+
+
+
+const DivStyledAsH6 = (0,_divWithClassName__WEBPACK_IMPORTED_MODULE_3__["default"])('h6');
+const CardSubtitle = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.forwardRef(({
+  className,
+  bsPrefix,
+  as: Component = DivStyledAsH6,
+  ...props
+}, ref) => {
+  bsPrefix = (0,_ThemeProvider__WEBPACK_IMPORTED_MODULE_4__.useBootstrapPrefix)(bsPrefix, 'card-subtitle');
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Component, {
+    ref: ref,
+    className: classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, bsPrefix),
+    ...props
+  });
+});
+CardSubtitle.displayName = 'CardSubtitle';
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CardSubtitle);
+
+/***/ }),
+
+/***/ "./node_modules/react-bootstrap/esm/CardText.js":
+/*!******************************************************!*\
+  !*** ./node_modules/react-bootstrap/esm/CardText.js ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _ThemeProvider__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ThemeProvider */ "./node_modules/react-bootstrap/esm/ThemeProvider.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+"use client";
+
+
+
+
+
+const CardText = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.forwardRef(({
+  className,
+  bsPrefix,
+  as: Component = 'p',
+  ...props
+}, ref) => {
+  bsPrefix = (0,_ThemeProvider__WEBPACK_IMPORTED_MODULE_3__.useBootstrapPrefix)(bsPrefix, 'card-text');
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Component, {
+    ref: ref,
+    className: classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, bsPrefix),
+    ...props
+  });
+});
+CardText.displayName = 'CardText';
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CardText);
+
+/***/ }),
+
+/***/ "./node_modules/react-bootstrap/esm/CardTitle.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/react-bootstrap/esm/CardTitle.js ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _ThemeProvider__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./ThemeProvider */ "./node_modules/react-bootstrap/esm/ThemeProvider.js");
+/* harmony import */ var _divWithClassName__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./divWithClassName */ "./node_modules/react-bootstrap/esm/divWithClassName.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+"use client";
+
+
+
+
+
+
+const DivStyledAsH5 = (0,_divWithClassName__WEBPACK_IMPORTED_MODULE_3__["default"])('h5');
+const CardTitle = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.forwardRef(({
+  className,
+  bsPrefix,
+  as: Component = DivStyledAsH5,
+  ...props
+}, ref) => {
+  bsPrefix = (0,_ThemeProvider__WEBPACK_IMPORTED_MODULE_4__.useBootstrapPrefix)(bsPrefix, 'card-title');
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Component, {
+    ref: ref,
+    className: classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, bsPrefix),
+    ...props
+  });
+});
+CardTitle.displayName = 'CardTitle';
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CardTitle);
+
+/***/ }),
+
+/***/ "./node_modules/react-bootstrap/esm/ThemeProvider.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/react-bootstrap/esm/ThemeProvider.js ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   DEFAULT_BREAKPOINTS: () => (/* binding */ DEFAULT_BREAKPOINTS),
+/* harmony export */   DEFAULT_MIN_BREAKPOINT: () => (/* binding */ DEFAULT_MIN_BREAKPOINT),
+/* harmony export */   ThemeConsumer: () => (/* binding */ Consumer),
+/* harmony export */   createBootstrapComponent: () => (/* binding */ createBootstrapComponent),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
+/* harmony export */   useBootstrapBreakpoints: () => (/* binding */ useBootstrapBreakpoints),
+/* harmony export */   useBootstrapMinBreakpoint: () => (/* binding */ useBootstrapMinBreakpoint),
+/* harmony export */   useBootstrapPrefix: () => (/* binding */ useBootstrapPrefix),
+/* harmony export */   useIsRTL: () => (/* binding */ useIsRTL)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+"use client";
+
+
+
+
+const DEFAULT_BREAKPOINTS = ['xxl', 'xl', 'lg', 'md', 'sm', 'xs'];
+const DEFAULT_MIN_BREAKPOINT = 'xs';
+const ThemeContext = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createContext({
+  prefixes: {},
+  breakpoints: DEFAULT_BREAKPOINTS,
+  minBreakpoint: DEFAULT_MIN_BREAKPOINT
+});
+const {
+  Consumer,
+  Provider
+} = ThemeContext;
+function ThemeProvider({
+  prefixes = {},
+  breakpoints = DEFAULT_BREAKPOINTS,
+  minBreakpoint = DEFAULT_MIN_BREAKPOINT,
+  dir,
+  children
+}) {
+  const contextValue = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(() => ({
+    prefixes: {
+      ...prefixes
+    },
+    breakpoints,
+    minBreakpoint,
+    dir
+  }), [prefixes, breakpoints, minBreakpoint, dir]);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(Provider, {
+    value: contextValue,
+    children: children
+  });
+}
+function useBootstrapPrefix(prefix, defaultPrefix) {
+  const {
+    prefixes
+  } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(ThemeContext);
+  return prefix || prefixes[defaultPrefix] || defaultPrefix;
+}
+function useBootstrapBreakpoints() {
+  const {
+    breakpoints
+  } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(ThemeContext);
+  return breakpoints;
+}
+function useBootstrapMinBreakpoint() {
+  const {
+    minBreakpoint
+  } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(ThemeContext);
+  return minBreakpoint;
+}
+function useIsRTL() {
+  const {
+    dir
+  } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(ThemeContext);
+  return dir === 'rtl';
+}
+function createBootstrapComponent(Component, opts) {
+  if (typeof opts === 'string') opts = {
+    prefix: opts
+  };
+  const isClassy = Component.prototype && Component.prototype.isReactComponent;
+  // If it's a functional component make sure we don't break it with a ref
+  const {
+    prefix,
+    forwardRefAs = isClassy ? 'ref' : 'innerRef'
+  } = opts;
+  const Wrapped = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.forwardRef(({
+    ...props
+  }, ref) => {
+    props[forwardRefAs] = ref;
+    const bsPrefix = useBootstrapPrefix(props.bsPrefix, prefix);
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(Component, {
+      ...props,
+      bsPrefix: bsPrefix
+    });
+  });
+  Wrapped.displayName = `Bootstrap(${Component.displayName || Component.name})`;
+  return Wrapped;
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ThemeProvider);
+
+/***/ }),
+
+/***/ "./node_modules/react-bootstrap/esm/divWithClassName.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/react-bootstrap/esm/divWithClassName.js ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (className => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.forwardRef((p, ref) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+  ...p,
+  ref: ref,
+  className: classnames__WEBPACK_IMPORTED_MODULE_1___default()(p.className, className)
+})));
+
+/***/ }),
 
 /***/ "./node_modules/react-dom/cjs/react-dom-client.development.js":
 /*!********************************************************************!*\
@@ -8,6 +815,7 @@
   \********************************************************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
+"use strict";
 /**
  * @license React
  * react-dom-client.development.js
@@ -28,6 +836,7 @@
   \*************************************************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
+"use strict";
 /**
  * @license React
  * react-dom.development.js
@@ -218,6 +1027,7 @@
   \******************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 
 function checkDCE() {
@@ -256,6 +1066,7 @@ if (false) {} else {
   \*****************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 
 function checkDCE() {
@@ -288,12 +1099,449 @@ if (false) {} else {
 
 /***/ }),
 
+/***/ "./node_modules/react/cjs/react-jsx-runtime.development.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/react/cjs/react-jsx-runtime.development.js ***!
+  \*****************************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+/**
+ * @license React
+ * react-jsx-runtime.development.js
+ *
+ * Copyright (c) Meta Platforms, Inc. and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+
+
+ true && function () {
+  function getComponentNameFromType(type) {
+    if (null == type) return null;
+    if ("function" === typeof type) return type.$$typeof === REACT_CLIENT_REFERENCE$2 ? null : type.displayName || type.name || null;
+    if ("string" === typeof type) return type;
+    switch (type) {
+      case REACT_FRAGMENT_TYPE:
+        return "Fragment";
+      case REACT_PORTAL_TYPE:
+        return "Portal";
+      case REACT_PROFILER_TYPE:
+        return "Profiler";
+      case REACT_STRICT_MODE_TYPE:
+        return "StrictMode";
+      case REACT_SUSPENSE_TYPE:
+        return "Suspense";
+      case REACT_SUSPENSE_LIST_TYPE:
+        return "SuspenseList";
+    }
+    if ("object" === typeof type) switch ("number" === typeof type.tag && console.error("Received an unexpected object in getComponentNameFromType(). This is likely a bug in React. Please file an issue."), type.$$typeof) {
+      case REACT_CONTEXT_TYPE:
+        return (type.displayName || "Context") + ".Provider";
+      case REACT_CONSUMER_TYPE:
+        return (type._context.displayName || "Context") + ".Consumer";
+      case REACT_FORWARD_REF_TYPE:
+        var innerType = type.render;
+        type = type.displayName;
+        type || (type = innerType.displayName || innerType.name || "", type = "" !== type ? "ForwardRef(" + type + ")" : "ForwardRef");
+        return type;
+      case REACT_MEMO_TYPE:
+        return innerType = type.displayName || null, null !== innerType ? innerType : getComponentNameFromType(type.type) || "Memo";
+      case REACT_LAZY_TYPE:
+        innerType = type._payload;
+        type = type._init;
+        try {
+          return getComponentNameFromType(type(innerType));
+        } catch (x) {}
+    }
+    return null;
+  }
+  function testStringCoercion(value) {
+    return "" + value;
+  }
+  function checkKeyStringCoercion(value) {
+    try {
+      testStringCoercion(value);
+      var JSCompiler_inline_result = !1;
+    } catch (e) {
+      JSCompiler_inline_result = !0;
+    }
+    if (JSCompiler_inline_result) {
+      JSCompiler_inline_result = console;
+      var JSCompiler_temp_const = JSCompiler_inline_result.error;
+      var JSCompiler_inline_result$jscomp$0 = "function" === typeof Symbol && Symbol.toStringTag && value[Symbol.toStringTag] || value.constructor.name || "Object";
+      JSCompiler_temp_const.call(JSCompiler_inline_result, "The provided key is an unsupported type %s. This value must be coerced to a string before using it here.", JSCompiler_inline_result$jscomp$0);
+      return testStringCoercion(value);
+    }
+  }
+  function disabledLog() {}
+  function disableLogs() {
+    if (0 === disabledDepth) {
+      prevLog = console.log;
+      prevInfo = console.info;
+      prevWarn = console.warn;
+      prevError = console.error;
+      prevGroup = console.group;
+      prevGroupCollapsed = console.groupCollapsed;
+      prevGroupEnd = console.groupEnd;
+      var props = {
+        configurable: !0,
+        enumerable: !0,
+        value: disabledLog,
+        writable: !0
+      };
+      Object.defineProperties(console, {
+        info: props,
+        log: props,
+        warn: props,
+        error: props,
+        group: props,
+        groupCollapsed: props,
+        groupEnd: props
+      });
+    }
+    disabledDepth++;
+  }
+  function reenableLogs() {
+    disabledDepth--;
+    if (0 === disabledDepth) {
+      var props = {
+        configurable: !0,
+        enumerable: !0,
+        writable: !0
+      };
+      Object.defineProperties(console, {
+        log: assign({}, props, {
+          value: prevLog
+        }),
+        info: assign({}, props, {
+          value: prevInfo
+        }),
+        warn: assign({}, props, {
+          value: prevWarn
+        }),
+        error: assign({}, props, {
+          value: prevError
+        }),
+        group: assign({}, props, {
+          value: prevGroup
+        }),
+        groupCollapsed: assign({}, props, {
+          value: prevGroupCollapsed
+        }),
+        groupEnd: assign({}, props, {
+          value: prevGroupEnd
+        })
+      });
+    }
+    0 > disabledDepth && console.error("disabledDepth fell below zero. This is a bug in React. Please file an issue.");
+  }
+  function describeBuiltInComponentFrame(name) {
+    if (void 0 === prefix) try {
+      throw Error();
+    } catch (x) {
+      var match = x.stack.trim().match(/\n( *(at )?)/);
+      prefix = match && match[1] || "";
+      suffix = -1 < x.stack.indexOf("\n    at") ? " (<anonymous>)" : -1 < x.stack.indexOf("@") ? "@unknown:0:0" : "";
+    }
+    return "\n" + prefix + name + suffix;
+  }
+  function describeNativeComponentFrame(fn, construct) {
+    if (!fn || reentry) return "";
+    var frame = componentFrameCache.get(fn);
+    if (void 0 !== frame) return frame;
+    reentry = !0;
+    frame = Error.prepareStackTrace;
+    Error.prepareStackTrace = void 0;
+    var previousDispatcher = null;
+    previousDispatcher = ReactSharedInternals.H;
+    ReactSharedInternals.H = null;
+    disableLogs();
+    try {
+      var RunInRootFrame = {
+        DetermineComponentFrameRoot: function () {
+          try {
+            if (construct) {
+              var Fake = function () {
+                throw Error();
+              };
+              Object.defineProperty(Fake.prototype, "props", {
+                set: function () {
+                  throw Error();
+                }
+              });
+              if ("object" === typeof Reflect && Reflect.construct) {
+                try {
+                  Reflect.construct(Fake, []);
+                } catch (x) {
+                  var control = x;
+                }
+                Reflect.construct(fn, [], Fake);
+              } else {
+                try {
+                  Fake.call();
+                } catch (x$0) {
+                  control = x$0;
+                }
+                fn.call(Fake.prototype);
+              }
+            } else {
+              try {
+                throw Error();
+              } catch (x$1) {
+                control = x$1;
+              }
+              (Fake = fn()) && "function" === typeof Fake.catch && Fake.catch(function () {});
+            }
+          } catch (sample) {
+            if (sample && control && "string" === typeof sample.stack) return [sample.stack, control.stack];
+          }
+          return [null, null];
+        }
+      };
+      RunInRootFrame.DetermineComponentFrameRoot.displayName = "DetermineComponentFrameRoot";
+      var namePropDescriptor = Object.getOwnPropertyDescriptor(RunInRootFrame.DetermineComponentFrameRoot, "name");
+      namePropDescriptor && namePropDescriptor.configurable && Object.defineProperty(RunInRootFrame.DetermineComponentFrameRoot, "name", {
+        value: "DetermineComponentFrameRoot"
+      });
+      var _RunInRootFrame$Deter = RunInRootFrame.DetermineComponentFrameRoot(),
+        sampleStack = _RunInRootFrame$Deter[0],
+        controlStack = _RunInRootFrame$Deter[1];
+      if (sampleStack && controlStack) {
+        var sampleLines = sampleStack.split("\n"),
+          controlLines = controlStack.split("\n");
+        for (_RunInRootFrame$Deter = namePropDescriptor = 0; namePropDescriptor < sampleLines.length && !sampleLines[namePropDescriptor].includes("DetermineComponentFrameRoot");) namePropDescriptor++;
+        for (; _RunInRootFrame$Deter < controlLines.length && !controlLines[_RunInRootFrame$Deter].includes("DetermineComponentFrameRoot");) _RunInRootFrame$Deter++;
+        if (namePropDescriptor === sampleLines.length || _RunInRootFrame$Deter === controlLines.length) for (namePropDescriptor = sampleLines.length - 1, _RunInRootFrame$Deter = controlLines.length - 1; 1 <= namePropDescriptor && 0 <= _RunInRootFrame$Deter && sampleLines[namePropDescriptor] !== controlLines[_RunInRootFrame$Deter];) _RunInRootFrame$Deter--;
+        for (; 1 <= namePropDescriptor && 0 <= _RunInRootFrame$Deter; namePropDescriptor--, _RunInRootFrame$Deter--) if (sampleLines[namePropDescriptor] !== controlLines[_RunInRootFrame$Deter]) {
+          if (1 !== namePropDescriptor || 1 !== _RunInRootFrame$Deter) {
+            do if (namePropDescriptor--, _RunInRootFrame$Deter--, 0 > _RunInRootFrame$Deter || sampleLines[namePropDescriptor] !== controlLines[_RunInRootFrame$Deter]) {
+              var _frame = "\n" + sampleLines[namePropDescriptor].replace(" at new ", " at ");
+              fn.displayName && _frame.includes("<anonymous>") && (_frame = _frame.replace("<anonymous>", fn.displayName));
+              "function" === typeof fn && componentFrameCache.set(fn, _frame);
+              return _frame;
+            } while (1 <= namePropDescriptor && 0 <= _RunInRootFrame$Deter);
+          }
+          break;
+        }
+      }
+    } finally {
+      reentry = !1, ReactSharedInternals.H = previousDispatcher, reenableLogs(), Error.prepareStackTrace = frame;
+    }
+    sampleLines = (sampleLines = fn ? fn.displayName || fn.name : "") ? describeBuiltInComponentFrame(sampleLines) : "";
+    "function" === typeof fn && componentFrameCache.set(fn, sampleLines);
+    return sampleLines;
+  }
+  function describeUnknownElementTypeFrameInDEV(type) {
+    if (null == type) return "";
+    if ("function" === typeof type) {
+      var prototype = type.prototype;
+      return describeNativeComponentFrame(type, !(!prototype || !prototype.isReactComponent));
+    }
+    if ("string" === typeof type) return describeBuiltInComponentFrame(type);
+    switch (type) {
+      case REACT_SUSPENSE_TYPE:
+        return describeBuiltInComponentFrame("Suspense");
+      case REACT_SUSPENSE_LIST_TYPE:
+        return describeBuiltInComponentFrame("SuspenseList");
+    }
+    if ("object" === typeof type) switch (type.$$typeof) {
+      case REACT_FORWARD_REF_TYPE:
+        return type = describeNativeComponentFrame(type.render, !1), type;
+      case REACT_MEMO_TYPE:
+        return describeUnknownElementTypeFrameInDEV(type.type);
+      case REACT_LAZY_TYPE:
+        prototype = type._payload;
+        type = type._init;
+        try {
+          return describeUnknownElementTypeFrameInDEV(type(prototype));
+        } catch (x) {}
+    }
+    return "";
+  }
+  function getOwner() {
+    var dispatcher = ReactSharedInternals.A;
+    return null === dispatcher ? null : dispatcher.getOwner();
+  }
+  function hasValidKey(config) {
+    if (hasOwnProperty.call(config, "key")) {
+      var getter = Object.getOwnPropertyDescriptor(config, "key").get;
+      if (getter && getter.isReactWarning) return !1;
+    }
+    return void 0 !== config.key;
+  }
+  function defineKeyPropWarningGetter(props, displayName) {
+    function warnAboutAccessingKey() {
+      specialPropKeyWarningShown || (specialPropKeyWarningShown = !0, console.error("%s: `key` is not a prop. Trying to access it will result in `undefined` being returned. If you need to access the same value within the child component, you should pass it as a different prop. (https://react.dev/link/special-props)", displayName));
+    }
+    warnAboutAccessingKey.isReactWarning = !0;
+    Object.defineProperty(props, "key", {
+      get: warnAboutAccessingKey,
+      configurable: !0
+    });
+  }
+  function elementRefGetterWithDeprecationWarning() {
+    var componentName = getComponentNameFromType(this.type);
+    didWarnAboutElementRef[componentName] || (didWarnAboutElementRef[componentName] = !0, console.error("Accessing element.ref was removed in React 19. ref is now a regular prop. It will be removed from the JSX Element type in a future release."));
+    componentName = this.props.ref;
+    return void 0 !== componentName ? componentName : null;
+  }
+  function ReactElement(type, key, self, source, owner, props) {
+    self = props.ref;
+    type = {
+      $$typeof: REACT_ELEMENT_TYPE,
+      type: type,
+      key: key,
+      props: props,
+      _owner: owner
+    };
+    null !== (void 0 !== self ? self : null) ? Object.defineProperty(type, "ref", {
+      enumerable: !1,
+      get: elementRefGetterWithDeprecationWarning
+    }) : Object.defineProperty(type, "ref", {
+      enumerable: !1,
+      value: null
+    });
+    type._store = {};
+    Object.defineProperty(type._store, "validated", {
+      configurable: !1,
+      enumerable: !1,
+      writable: !0,
+      value: 0
+    });
+    Object.defineProperty(type, "_debugInfo", {
+      configurable: !1,
+      enumerable: !1,
+      writable: !0,
+      value: null
+    });
+    Object.freeze && (Object.freeze(type.props), Object.freeze(type));
+    return type;
+  }
+  function jsxDEVImpl(type, config, maybeKey, isStaticChildren, source, self) {
+    if ("string" === typeof type || "function" === typeof type || type === REACT_FRAGMENT_TYPE || type === REACT_PROFILER_TYPE || type === REACT_STRICT_MODE_TYPE || type === REACT_SUSPENSE_TYPE || type === REACT_SUSPENSE_LIST_TYPE || type === REACT_OFFSCREEN_TYPE || "object" === typeof type && null !== type && (type.$$typeof === REACT_LAZY_TYPE || type.$$typeof === REACT_MEMO_TYPE || type.$$typeof === REACT_CONTEXT_TYPE || type.$$typeof === REACT_CONSUMER_TYPE || type.$$typeof === REACT_FORWARD_REF_TYPE || type.$$typeof === REACT_CLIENT_REFERENCE$1 || void 0 !== type.getModuleId)) {
+      var children = config.children;
+      if (void 0 !== children) if (isStaticChildren) {
+        if (isArrayImpl(children)) {
+          for (isStaticChildren = 0; isStaticChildren < children.length; isStaticChildren++) validateChildKeys(children[isStaticChildren], type);
+          Object.freeze && Object.freeze(children);
+        } else console.error("React.jsx: Static children should always be an array. You are likely explicitly calling React.jsxs or React.jsxDEV. Use the Babel transform instead.");
+      } else validateChildKeys(children, type);
+    } else {
+      children = "";
+      if (void 0 === type || "object" === typeof type && null !== type && 0 === Object.keys(type).length) children += " You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.";
+      null === type ? isStaticChildren = "null" : isArrayImpl(type) ? isStaticChildren = "array" : void 0 !== type && type.$$typeof === REACT_ELEMENT_TYPE ? (isStaticChildren = "<" + (getComponentNameFromType(type.type) || "Unknown") + " />", children = " Did you accidentally export a JSX literal instead of a component?") : isStaticChildren = typeof type;
+      console.error("React.jsx: type is invalid -- expected a string (for built-in components) or a class/function (for composite components) but got: %s.%s", isStaticChildren, children);
+    }
+    if (hasOwnProperty.call(config, "key")) {
+      children = getComponentNameFromType(type);
+      var keys = Object.keys(config).filter(function (k) {
+        return "key" !== k;
+      });
+      isStaticChildren = 0 < keys.length ? "{key: someKey, " + keys.join(": ..., ") + ": ...}" : "{key: someKey}";
+      didWarnAboutKeySpread[children + isStaticChildren] || (keys = 0 < keys.length ? "{" + keys.join(": ..., ") + ": ...}" : "{}", console.error('A props object containing a "key" prop is being spread into JSX:\n  let props = %s;\n  <%s {...props} />\nReact keys must be passed directly to JSX without using spread:\n  let props = %s;\n  <%s key={someKey} {...props} />', isStaticChildren, children, keys, children), didWarnAboutKeySpread[children + isStaticChildren] = !0);
+    }
+    children = null;
+    void 0 !== maybeKey && (checkKeyStringCoercion(maybeKey), children = "" + maybeKey);
+    hasValidKey(config) && (checkKeyStringCoercion(config.key), children = "" + config.key);
+    if ("key" in config) {
+      maybeKey = {};
+      for (var propName in config) "key" !== propName && (maybeKey[propName] = config[propName]);
+    } else maybeKey = config;
+    children && defineKeyPropWarningGetter(maybeKey, "function" === typeof type ? type.displayName || type.name || "Unknown" : type);
+    return ReactElement(type, children, self, source, getOwner(), maybeKey);
+  }
+  function validateChildKeys(node, parentType) {
+    if ("object" === typeof node && node && node.$$typeof !== REACT_CLIENT_REFERENCE) if (isArrayImpl(node)) for (var i = 0; i < node.length; i++) {
+      var child = node[i];
+      isValidElement(child) && validateExplicitKey(child, parentType);
+    } else if (isValidElement(node)) node._store && (node._store.validated = 1);else if (null === node || "object" !== typeof node ? i = null : (i = MAYBE_ITERATOR_SYMBOL && node[MAYBE_ITERATOR_SYMBOL] || node["@@iterator"], i = "function" === typeof i ? i : null), "function" === typeof i && i !== node.entries && (i = i.call(node), i !== node)) for (; !(node = i.next()).done;) isValidElement(node.value) && validateExplicitKey(node.value, parentType);
+  }
+  function isValidElement(object) {
+    return "object" === typeof object && null !== object && object.$$typeof === REACT_ELEMENT_TYPE;
+  }
+  function validateExplicitKey(element, parentType) {
+    if (element._store && !element._store.validated && null == element.key && (element._store.validated = 1, parentType = getCurrentComponentErrorInfo(parentType), !ownerHasKeyUseWarning[parentType])) {
+      ownerHasKeyUseWarning[parentType] = !0;
+      var childOwner = "";
+      element && null != element._owner && element._owner !== getOwner() && (childOwner = null, "number" === typeof element._owner.tag ? childOwner = getComponentNameFromType(element._owner.type) : "string" === typeof element._owner.name && (childOwner = element._owner.name), childOwner = " It was passed a child from " + childOwner + ".");
+      var prevGetCurrentStack = ReactSharedInternals.getCurrentStack;
+      ReactSharedInternals.getCurrentStack = function () {
+        var stack = describeUnknownElementTypeFrameInDEV(element.type);
+        prevGetCurrentStack && (stack += prevGetCurrentStack() || "");
+        return stack;
+      };
+      console.error('Each child in a list should have a unique "key" prop.%s%s See https://react.dev/link/warning-keys for more information.', parentType, childOwner);
+      ReactSharedInternals.getCurrentStack = prevGetCurrentStack;
+    }
+  }
+  function getCurrentComponentErrorInfo(parentType) {
+    var info = "",
+      owner = getOwner();
+    owner && (owner = getComponentNameFromType(owner.type)) && (info = "\n\nCheck the render method of `" + owner + "`.");
+    info || (parentType = getComponentNameFromType(parentType)) && (info = "\n\nCheck the top-level render call using <" + parentType + ">.");
+    return info;
+  }
+  var React = __webpack_require__(/*! react */ "./node_modules/react/index.js"),
+    REACT_ELEMENT_TYPE = Symbol.for("react.transitional.element"),
+    REACT_PORTAL_TYPE = Symbol.for("react.portal"),
+    REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"),
+    REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"),
+    REACT_PROFILER_TYPE = Symbol.for("react.profiler");
+  Symbol.for("react.provider");
+  var REACT_CONSUMER_TYPE = Symbol.for("react.consumer"),
+    REACT_CONTEXT_TYPE = Symbol.for("react.context"),
+    REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"),
+    REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"),
+    REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list"),
+    REACT_MEMO_TYPE = Symbol.for("react.memo"),
+    REACT_LAZY_TYPE = Symbol.for("react.lazy"),
+    REACT_OFFSCREEN_TYPE = Symbol.for("react.offscreen"),
+    MAYBE_ITERATOR_SYMBOL = Symbol.iterator,
+    REACT_CLIENT_REFERENCE$2 = Symbol.for("react.client.reference"),
+    ReactSharedInternals = React.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE,
+    hasOwnProperty = Object.prototype.hasOwnProperty,
+    assign = Object.assign,
+    REACT_CLIENT_REFERENCE$1 = Symbol.for("react.client.reference"),
+    isArrayImpl = Array.isArray,
+    disabledDepth = 0,
+    prevLog,
+    prevInfo,
+    prevWarn,
+    prevError,
+    prevGroup,
+    prevGroupCollapsed,
+    prevGroupEnd;
+  disabledLog.__reactDisabledLog = !0;
+  var prefix,
+    suffix,
+    reentry = !1;
+  var componentFrameCache = new ("function" === typeof WeakMap ? WeakMap : Map)();
+  var REACT_CLIENT_REFERENCE = Symbol.for("react.client.reference"),
+    specialPropKeyWarningShown;
+  var didWarnAboutElementRef = {};
+  var didWarnAboutKeySpread = {},
+    ownerHasKeyUseWarning = {};
+  exports.Fragment = REACT_FRAGMENT_TYPE;
+  exports.jsx = function (type, config, maybeKey, source, self) {
+    return jsxDEVImpl(type, config, maybeKey, !1, source, self);
+  };
+  exports.jsxs = function (type, config, maybeKey, source, self) {
+    return jsxDEVImpl(type, config, maybeKey, !0, source, self);
+  };
+}();
+
+/***/ }),
+
 /***/ "./node_modules/react/cjs/react.development.js":
 /*!*****************************************************!*\
   !*** ./node_modules/react/cjs/react.development.js ***!
   \*****************************************************/
 /***/ ((module, exports, __webpack_require__) => {
 
+"use strict";
 /* module decorator */ module = __webpack_require__.nmd(module);
 /**
  * @license React
@@ -1266,10 +2514,26 @@ if (false) {} else {
   \*************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 
 if (false) {} else {
   module.exports = __webpack_require__(/*! ./cjs/react.development.js */ "./node_modules/react/cjs/react.development.js");
+}
+
+/***/ }),
+
+/***/ "./node_modules/react/jsx-runtime.js":
+/*!*******************************************!*\
+  !*** ./node_modules/react/jsx-runtime.js ***!
+  \*******************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+
+if (false) {} else {
+  module.exports = __webpack_require__(/*! ./cjs/react-jsx-runtime.development.js */ "./node_modules/react/cjs/react-jsx-runtime.development.js");
 }
 
 /***/ }),
@@ -1280,6 +2544,7 @@ if (false) {} else {
   \*************************************************************/
 /***/ ((__unused_webpack_module, exports) => {
 
+"use strict";
 /**
  * @license React
  * scheduler.development.js
@@ -1555,10 +2820,46 @@ if (false) {} else {
   \*****************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 
 if (false) {} else {
   module.exports = __webpack_require__(/*! ./cjs/scheduler.development.js */ "./node_modules/scheduler/cjs/scheduler.development.js");
+}
+
+/***/ }),
+
+/***/ "./src/Views/Product.js":
+/*!******************************!*\
+  !*** ./src/Views/Product.js ***!
+  \******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Product)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap/Button */ "./node_modules/react-bootstrap/esm/Button.js");
+/* harmony import */ var react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap/Card */ "./node_modules/react-bootstrap/esm/Card.js");
+
+
+
+function Product({
+  product
+}) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    style: {
+      width: '18rem'
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_1__["default"].Img, {
+    variant: "top",
+    src: "holder.js/100px180"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_1__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_1__["default"].Title, null, "Card Title"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_1__["default"].Text, null, "Some quick example text to build on the card title and make up the bulk of the card's content."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    variant: "primary"
+  }, "Go somewhere")));
 }
 
 /***/ }),
@@ -1569,6 +2870,7 @@ if (false) {} else {
   \****************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   handleClick: () => (/* binding */ handleClick)
@@ -1587,6 +2889,7 @@ function handleClick() {
   \*****************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   handleSubmit: () => (/* binding */ handleSubmit)
@@ -1604,6 +2907,7 @@ function handleSubmit(event = new Event(message)) {
   \*****************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   output: () => (/* binding */ output)
@@ -1611,6 +2915,113 @@ __webpack_require__.r(__webpack_exports__);
 function output(message = "", outputTag = "outputTag", shouldAppend = true) {
   if (shouldAppend) window[outputTag].innerHTML += message;else window[outputTag].innerHTML = message;
 }
+
+/***/ }),
+
+/***/ "./src/utils/products.js":
+/*!*******************************!*\
+  !*** ./src/utils/products.js ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   products: () => (/* binding */ products)
+/* harmony export */ });
+//import image1 from "../assets/image1.jpg";
+
+function products() {
+  return [{
+    name: "Abu Garcia Max X baitcast",
+    description: "Abu Garcia Max X baitcast Experience better-than-ever Abu Garcia engineering for MAXimum performance with the Abu Garcia Max X baitcast combo. This combo features a custom designed reel seat with integrated polymer comfort grip, for ultimate comfort, 4+1 bearing system for ultimate smoothness, and 24-ton graphite construction for ultimate sensitivity.",
+    summary: ""
+    //src: image1
+  }, {
+    name: "Zebco Bullet MG Spincast Reel",
+    description: "100% performance-driven, the Zebco® Bullet MG Spincast Reel features a super-lightweight magnesium body that pairs perfectly with your finest rods, for a precision feel and balance that you'll appreciate all day long. It's Zebco's fastest spincaster ever, with a 5.1:1 retrieve ratio that brings in an impressive 29.6\" of line per handle turn, and it has all the speed and power needed to handle big game fish in freshwater. Now you can turn to spincast gear for performance fishing using your favorite techniques, without worrying about line tangles and other issues. The Zebco Bullet MG's unprecedented feature list includes strong all-metal construction; precision-machined aluminum and brass gears; a GlideLine ball bearing: a smooth 9-bearing (8+1) system with anti-reverse clutch; oscillating quick-change spool; ZeroFriction™ pick-up pins; dial-adjustable disk drag with up to 12 lbs. of run-stopping power; and special GripEm™ handle knobs for solid retrieves in any weather. Convertible left/right retrieve; pre-spooled with premium 10-lb. mono. Manufacturer's 1-year warranty.",
+    summary: ""
+  }, {
+    name: "Offshore Angler SeaFire Conventional Rod and Reel Combo",
+    description: "Set the water on fire with the Offshore Angler™ SeaFire Conventional Rod and Reel Combo. Our SeaFire Conventional Reel is ideal for bottom fishing for snapper or grouper. It's also a great trolling reel for tuna, dolphin, and kingfish. A 1-piece CNC-machined aluminum frame provides the strength needed to hold up to hard-charging trophies. Smooth and precise, the SeaFire features 4 sealed stainless steel ball bearings engineered to perform in a harsh saltwater environment. Additional features include a powerful star drag system to help slow the run, a double-anodized machined-aluminum spool with line capacity rings, and an audible bait clicker. Offshore Angler's tenacious SeaFire Conventional Rod boasts a rugged, 1-piece tubular composite blank with corrosion-resistant, double-footed stainless steel guides and a graphite reel seat. A comfortable EVA handle and graphite gimbal with cover work well with rod holders and fighting belts.",
+    summary: ""
+  }, {
+    name: "2-Piece Saltwater Spinning Fishing Rod Offshore Heavy Graphite",
+    description: "2-Piece Saltwater Spinning Fishing Rod Offshore Heavy Graphite Portable Travel Description: Fiblink 2-Piece Saltwater Spinning fishing Rod offshore Carbon Portable Fishing Rod At Fiblink Fishing Tackle we deliver more than just fishing gears. We deliver the motivation to hit the water, the energy to keep focus and the excitement that immits every cast with high expectations. Each of our products is designed and continuously improved through the customer's needs and market trends. We do our best to continually improve our products to meet your individual fishing equipment needs. We are proud to provide the 1 year Service! Powerful, versatile, and flexible. Light weight with tremendous overall strength. 2-Piece portable carbon saltwater spinning fishing rod. Specifications 6' Heavy Length: 6' | Pieces: 2 | Power: Heavy | Guides: 6+1 | Line Weight: 30-50Lb | Lure Weight: 4-7oz | Rod Weight: 11.7oz 7' Medium Heavy Length: 7' | Pieces: 2 | Power: Medium Heavy | Guides: 7+1 | Line Weight: 15-30Lb | Lure Wei",
+    summary: ""
+  }];
+}
+
+/***/ }),
+
+/***/ "./node_modules/classnames/index.js":
+/*!******************************************!*\
+  !*** ./node_modules/classnames/index.js ***!
+  \******************************************/
+/***/ ((module, exports) => {
+
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+	Copyright (c) 2018 Jed Watson.
+	Licensed under the MIT License (MIT), see
+	http://jedwatson.github.io/classnames
+*/
+/* global define */
+
+(function () {
+  'use strict';
+
+  var hasOwn = {}.hasOwnProperty;
+  function classNames() {
+    var classes = '';
+    for (var i = 0; i < arguments.length; i++) {
+      var arg = arguments[i];
+      if (arg) {
+        classes = appendClass(classes, parseValue(arg));
+      }
+    }
+    return classes;
+  }
+  function parseValue(arg) {
+    if (typeof arg === 'string' || typeof arg === 'number') {
+      return arg;
+    }
+    if (typeof arg !== 'object') {
+      return '';
+    }
+    if (Array.isArray(arg)) {
+      return classNames.apply(null, arg);
+    }
+    if (arg.toString !== Object.prototype.toString && !arg.toString.toString().includes('[native code]')) {
+      return arg.toString();
+    }
+    var classes = '';
+    for (var key in arg) {
+      if (hasOwn.call(arg, key) && arg[key]) {
+        classes = appendClass(classes, key);
+      }
+    }
+    return classes;
+  }
+  function appendClass(value, newClass) {
+    if (!newClass) {
+      return value;
+    }
+    if (value) {
+      return value + ' ' + newClass;
+    }
+    return value + newClass;
+  }
+  if ( true && module.exports) {
+    classNames.default = classNames;
+    module.exports = classNames;
+  } else if (true) {
+    // register as 'classnames', consistent with npm package name
+    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function () {
+      return classNames;
+    }).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+		__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+  } else {}
+})();
 
 /***/ })
 
@@ -1695,8 +3106,9 @@ function output(message = "", outputTag = "outputTag", shouldAppend = true) {
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
-// This entry needs to be wrapped in an IIFE because it needs to be isolated against other modules in the chunk.
+// This entry needs to be wrapped in an IIFE because it needs to be in strict mode.
 (() => {
+"use strict";
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
@@ -1706,15 +3118,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom/client */ "./node_modules/react-dom/client.js");
 /* harmony import */ var _controllers_handleSubmit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./controllers/handleSubmit */ "./src/controllers/handleSubmit.js");
 /* harmony import */ var _controllers_handleClick__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./controllers/handleClick */ "./src/controllers/handleClick.js");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../index.scss */ "./index.scss");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _Views_Product__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Views/Product */ "./src/Views/Product.js");
+/* harmony import */ var _utils_products__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./utils/products */ "./src/utils/products.js");
 
 
 
 
+
+
+
+const productsList = (0,_utils_products__WEBPACK_IMPORTED_MODULE_6__.products)();
 const root = (0,react_dom_client__WEBPACK_IMPORTED_MODULE_1__.createRoot)(window.bodyTag);
 root.render(/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("main", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", {
-  class: "m-1 text-center "
+  className: "m-1 text-center "
 }, "Rods and reels!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("iframe", {
-  class: "m-5",
+  className: "m-5",
   width: "560",
   height: "315",
   src: "https://www.youtube.com/embed/rhhBPNUXYis?si=q0SyOcgPYlbUj4NE",
@@ -1724,35 +3144,48 @@ root.render(/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElem
   referrerPolicy: "strict-origin-when-cross-origin",
   allowFullScreen: true
 }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
-  class: "fw-bold fst-italic p-2"
-}, "Hello my fellow fishing enthusiasts! We have 100's of rods and reels on sale right now. Every brand you can think of from abu garcias to zebcos in many different colors to fit every age. We even have ocean poles for you deep sea fishermen who love to go all out. Come check us out and leave your information to recieve an extra discount on our already low prices."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, "Abu Garcia Max X baitcast"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
-  class: "p-2"
-}, "Abu Garcia Max X baitcast Experience better-than-ever Abu Garcia engineering for MAXimum performance with the Abu Garcia Max X baitcast combo. This combo features a custom designed reel seat with integrated polymer comfort grip, for ultimate comfort, 4+1 bearing system for ultimate smoothness, and 24-ton graphite construction for ultimate sensitivity."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, "Zebco Bullet MG Spincast Reel"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
-  class: "p-2"
-}, "100% performance-driven, the Zebco\xAE Bullet MG Spincast Reel features a super-lightweight magnesium body that pairs perfectly with your finest rods, for a precision feel and balance that you'll appreciate all day long. It's Zebco's fastest spincaster ever, with a 5.1:1 retrieve ratio that brings in an impressive 29.6\" of line per handle turn, and it has all the speed and power needed to handle big game fish in freshwater. Now you can turn to spincast gear for performance fishing using your favorite techniques, without worrying about line tangles and other issues. The Zebco Bullet MG's unprecedented feature list includes strong all-metal construction; precision-machined aluminum and brass gears; a GlideLine ball bearing: a smooth 9-bearing (8+1) system with anti-reverse clutch; oscillating quick-change spool; ZeroFriction\u2122 pick-up pins; dial-adjustable disk drag with up to 12 lbs. of run-stopping power; and special GripEm\u2122 handle knobs for solid retrieves in any weather. Convertible left/right retrieve; pre-spooled with premium 10-lb. mono. Manufacturer's 1-year warranty."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, "Offshore Angler SeaFire Conventional Rod and Reel Combo"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
-  class: "p-2"
-}, "Set the water on fire with the Offshore Angler\u2122 SeaFire Conventional Rod and Reel Combo. Our SeaFire Conventional Reel is ideal for bottom fishing for snapper or grouper. It's also a great trolling reel for tuna, dolphin, and kingfish. A 1-piece CNC-machined aluminum frame provides the strength needed to hold up to hard-charging trophies. Smooth and precise, the SeaFire features 4 sealed stainless steel ball bearings engineered to perform in a harsh saltwater environment. Additional features include a powerful star drag system to help slow the run, a double-anodized machined-aluminum spool with line capacity rings, and an audible bait clicker. Offshore Angler's tenacious SeaFire Conventional Rod boasts a rugged, 1-piece tubular composite blank with corrosion-resistant, double-footed stainless steel guides and a graphite reel seat. A comfortable EVA handle and graphite gimbal with cover work well with rod holders and fighting belts."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, "2-Piece Saltwater Spinning Fishing Rod Offshore Heavy Graphite"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
-  class: "p-2"
-}, "2-Piece Saltwater Spinning Fishing Rod Offshore Heavy Graphite Portable Travel Description: Fiblink 2-Piece Saltwater Spinning fishing Rod offshore Carbon Portable Fishing Rod At Fiblink Fishing Tackle we deliver more than just fishing gears. We deliver the motivation to hit the water, the energy to keep focus and the excitement that immits every cast with high expectations. Each of our products is designed and continuously improved through the customer's needs and market trends. We do our best to continually improve our products to meet your individual fishing equipment needs. We are proud to provide the 1 year Service! Powerful, versatile, and flexible. Light weight with tremendous overall strength. 2-Piece portable carbon saltwater spinning fishing rod. Specifications 6' Heavy Length: 6' | Pieces: 2 | Power: Heavy | Guides: 6+1 | Line Weight: 30-50Lb | Lure Weight: 4-7oz | Rod Weight: 11.7oz 7' Medium Heavy Length: 7' | Pieces: 2 | Power: Medium Heavy | Guides: 7+1 | Line Weight: 15-30Lb | Lure Wei"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+  className: "fw-bold fst-italic p-2"
+}, "Hello my fellow fishing enthusiasts! We have 100's of rods and reels on sale right now. Every brand you can think of from abu garcias to zebcos in many different colors to fit every age. We even have ocean poles for you deep sea fishermen who love to go all out. Come check us out and leave your information to recieve an extra discount on our already low prices."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  className: "container text-center"
+}, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  className: "row"
+}, productsList.map((product, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  key: index,
+  className: "col mt-5"
+}, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Views_Product__WEBPACK_IMPORTED_MODULE_5__["default"], {
+  product: product
+})))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
   onClick: _controllers_handleClick__WEBPACK_IMPORTED_MODULE_3__.handleClick,
-  class: "btn btn-primary p-2"
-}, "Best price guaranteed!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
+  className: "btn btn-primary p-2"
+}, "Best price guaranteed!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  className: "d-flex justify-content-center w-100"
+}, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
+  className: "w-50",
   onSubmit: _controllers_handleSubmit__WEBPACK_IMPORTED_MODULE_2__.handleSubmit
-}, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), "Name: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
-  type: "name"
-}), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), "Email: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+}, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+  className: "d-flex flex-column"
+}, "Name: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+  required: true,
+  type: "text"
+})), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+  className: "d-flex flex-column"
+}, "Email: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+  required: true,
   type: "email"
-}), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), "Number:", " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+})), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+  className: "d-flex flex-column"
+}, "Number:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
   type: "tel",
   id: "phone",
   placeholder: "(123) 456 - 7890 ",
   maxLength: "12"
-}), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
-  type: "submit",
-  class: "btn btn-warning"
-})), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("output", {
+})), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+  className: "d-flex flex-column"
+}, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+  className: "btn btn-primary"
+}, "Submit")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("output", {
   id: "outputTag"
-})));
+})))));
 })();
 
 /******/ })()
